@@ -68,7 +68,7 @@ reCaptcha:
 atom_feed:
   path                   : # blank (default) uses feed.xml
   hide                   : # true, false (default)
-search                   : # true, false (default)
+search                   : true
 search_full_content      : # true, false (default)
 search_provider          : # lunr (default), algolia, google
 lunr:
@@ -120,9 +120,6 @@ author:
   location         : "Oro Verde, Entre Ríos, Argentina"
   email            : "juan.reta@uner.edu.ar"
   links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: "mailto:juan.reta@uner.edu.ar"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://ingenieria.uner.edu.ar/nucleos/prototipado/"
