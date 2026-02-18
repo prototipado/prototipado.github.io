@@ -1,0 +1,18 @@
+Juan I. Cerrudo:
+  name        : "Juan I. Cerrudo"
+  bio         : "Colaborador del Laboratorio de Prototipado"
+  avatar      : "/assets/images/autores/juan_cerrudo.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:email@ejemplo.com"
+
+# Agregá más autores siguiendo el mismo formato:
+# Nombre Apellido:
+#   name        : "Nombre Apellido"
+#   bio         : "Descripción breve"
+#   avatar      : "/assets/images/autores/foto.jpg"
+#   links:
+#     - label: "Email"
+#       icon: "fas fa-fw fa-envelope-square"
+#       url: "mailto:correo@ejemplo.com"

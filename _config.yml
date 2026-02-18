@@ -11,17 +11,17 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
+remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "es-ES"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Site Title"
+title                    : "Laboratorio de Prototipado Electrónico y 3D"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Laboratorio de Prototipado"
+description              : "Diseño y Desarrollo de Sistemas Embebidos orientados a la implementación de prototipos para la industria de tecnología médica y agropecuaria."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -112,53 +112,51 @@ analytics:
 
 
 # Site Author
+# Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  name             : "Laboratorio de Prototipado"
+  avatar           : "/assets/images/lab_logo.png"
+  bio              : "Facultad de Ingeniería - Universidad Nacional de Entre Ríos"
+  location         : "Oro Verde, Entre Ríos, Argentina"
+  email            : "juan.reta@uner.edu.ar"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto:juan.reta@uner.edu.ar"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://ingenieria.uner.edu.ar/nucleos/prototipado/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/company/laboratorio-de-prototipado-electronico/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://www.facebook.com/LabProtoFIUNER"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://www.instagram.com/labprotofiuner/"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/@laboratoriodeprototipadoel330"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/company/laboratorio-de-prototipado-electronico/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
+      url: "https://www.facebook.com/LabProtoFIUNER"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://www.instagram.com/labprotofiuner/"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/@laboratoriodeprototipadoel330"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://ingenieria.uner.edu.ar/nucleos/prototipado/"
   since: "2013"
 
 
@@ -265,6 +263,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-remote-theme
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -273,6 +272,8 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-github-metadata
+  - jekyll-remote-theme
 
 
 # Archives
@@ -324,4 +325,6 @@ defaults:
       read_time: true
       comments: # true
       share: true
+      share: true
       related: true
+      toc_label: "En esta página"
