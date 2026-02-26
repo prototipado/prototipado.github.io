@@ -40,7 +40,7 @@ Este sensor es un transductor de presión de silicio de 0 a 2.3 MPa (0 a 23 bar)
 
 Comenzamos el modelado CAD del dispositivo con el objetivo de reproducir la geometría descripta en la patente. Para el cono de gel se optó por utilizar silicona, diseñando y fabricando previamente un molde en PLA mediante impresión 3D. El molde se fijaba en una morsa para asegurar estabilidad durante el proceso de colado.
 
-{% include figure image_path="/assets/images/tonometro/corte_a.png" alt="Corte transversal del dispositivo" caption="Corte longitudinal del modelo CAD mostrando el canal de presión y el área de contacto del sensor." class="align-center" %}
+{% include figure image_path="/assets/images/tonometro/corte_a.png" alt="Corte transversal del dispositivo" caption="Corte longitudinal del modelo CAD mostrando la estructura del sensor, la pieza amarilla sostiene el sensor, la pieza verde sujeta el cable. La pieza forntal se imprime en TPU, donde la superficie de contacto es de solo un par de capas de material." class="align-center" %}
 
 En lugar de emplear silicona líquida convencional (RTV), se utilizó una pistola termofusible. Aunque coloquialmente se las denomina “pistolas de silicona”, las barras empleadas están compuestas en realidad por polímeros termoplásticos (habitualmente EVA u otros copolímeros). No obstante, debido a la similitud en la consistencia final del material solidificado y su facilidad de procesamiento, se decidió evaluar esta alternativa como solución práctica y de bajo costo. 
 
@@ -48,7 +48,7 @@ En lugar de emplear silicona líquida convencional (RTV), se utilizó una pistol
 
 Fueron necesarios multiples prototipos, tanto del molde como del cono de gel, para optimizar la geometría y logragr un buen "colado". La estructura del resto del dispositivo también pasó por varias iteraciones, buscando una geometría que permitiera sujetar el sensor de forma segura y que a la vez fuera cómoda de utilizar.
 
-{% include figure image_path="/assets/images/tonometro/prototipos.jpg" alt="Evolución de prototipos" caption="Diferentes iteraciones del cono y la estructura de soporte para optimizar la sensibilidad." class="align-center" %}
+{% include figure image_path="/assets/images/tonometro/prototipos.jpg" alt="Evolución de prototipos" caption="Diferentes iteraciones de los moldes y la estructura del dispositivo, se buscaba optimizar funcionalidad y facilidad en el armado." class="align-center" %}
 
 ## Pruebas
 
