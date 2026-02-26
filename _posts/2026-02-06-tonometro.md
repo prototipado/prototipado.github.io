@@ -44,7 +44,7 @@ Comenzamos el modelado CAD del dispositivo con el objetivo de reproducir la geom
 
 En lugar de emplear silicona líquida convencional (RTV), se utilizó una pistola termofusible. Aunque coloquialmente se las denomina “pistolas de silicona”, las barras empleadas están compuestas en realidad por polímeros termoplásticos (habitualmente EVA u otros copolímeros). No obstante, debido a la similitud en la consistencia final del material solidificado y su facilidad de procesamiento, se decidió evaluar esta alternativa como solución práctica y de bajo costo. 
 
-{% include figure image_path="/assets/images/tonometro/molde_A.png" alt="Molde para cono de gel" caption="Molde impreso en PLA fijado para el colado del cono de gel." class="align-center" %}
+{% include figure image_path="/assets/images/tonometro/molde_A.png" alt="Molde para cono de gel" caption="Molde impreso en PLA fijado para el colado del cono de gel. Se puede ver el orificio de venteo en la parte superior, para asegurar el llenado completo de la cavidad del cono. Además se coloco paple de aluminio en la entrada del molde, a fin de proteger el PLA de la pistola termofusible." class="align-center" %}
 
 Fueron necesarios multiples prototipos, tanto del molde como del cono de gel, para optimizar la geometría y logragr un buen "colado". La estructura del resto del dispositivo también pasó por varias iteraciones, buscando una geometría que permitiera sujetar el sensor de forma segura y que a la vez fuera cómoda de utilizar.
 
