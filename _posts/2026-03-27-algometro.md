@@ -39,7 +39,7 @@ Colocamos el sensor en una suerte de "cuna" diseñada en la pieza plástica que 
 Realizamos la transmisión de fuerza (desde el punto de contacto exterior hacia el sensor interno) mediante una varilla de acero de 2.5mm de diámetro, de deslizamiento suave por estar colocada dentro de una camisa de bronce y sostenida por una pieza plástica. Un resorte se encarga de ejercer fuerza sobre la varilla, manteniéndola siempre en contacto con el sensor con una precarga constante cercana a los 120 gramos. 
 
 
-{% include figure image_path="/assets/images/sensor_dolor/estimulador.png" alt="Algómetro robótico" caption="Estimulador manual, vista en corte." class="align-center" %}
+{% include figure image_path="/assets/images/sensor_dolor/estiumulador.png" alt="Algómetro robótico" caption="Estimulador manual, vista en corte." class="align-center" %}
 
 A la pieza plástica que sostiene la varilla le diseñamos además un pequeño mango para permitirnos separar la varilla del sensor temporalmente y trabarla. De esta manera, podemos proteger de sobrecargas al delicado sensor mientras le estamos cambiando el efector de estimulación al paciente (que puede ser punzante, una hoja sin filo, entre otros).
 
