@@ -42,6 +42,8 @@ Comenzamos el modelado CAD del dispositivo con el objetivo de reproducir la geom
 
 {% include figure image_path="/assets/images/tonometro/corte_a.png" alt="Corte transversal del dispositivo" caption="Corte longitudinal del modelo CAD mostrando la estructura del sensor, la pieza amarilla sostiene el sensor, la pieza verde sujeta el cable. La pieza frontal se imprime en TPU, donde la superficie de contacto es de solo un par de capas de material." class="align-center" %}
 
+
+
 En lugar de emplear silicona líquida convencional (RTV), se utilizó una pistola termofusible. Aunque coloquialmente se las denomina “pistolas de silicona”, las barras empleadas están compuestas en realidad por polímeros termoplásticos (habitualmente EVA u otros copolímeros). No obstante, debido a la similitud en la consistencia final del material solidificado y su facilidad de procesamiento, se decidió evaluar esta alternativa como solución práctica y de bajo costo. 
 
 {% include figure image_path="/assets/images/tonometro/molde_A.png" alt="Molde para cono de gel" caption="Molde impreso en PLA fijado para el colado del cono de gel. Se puede ver el orificio de venteo en la parte superior, para asegurar el llenado completo de la cavidad del cono. Además se colocó papel de aluminio en la entrada del molde, a fin de proteger el PLA de la pistola termofusible." class="align-center" %}
@@ -67,3 +69,7 @@ Si además se suma la captura de la señal de ECG, se obtienen registros como el
 El rediseño permitió obtener una señal de presión con morfología compatible con una onda de pulso radial fisiológica, evitando las limitaciones dinámicas del sistema hidráulico inicial. La integración con el BioAmp demostró la viabilidad de registrar simultáneamente ECG y presión arterial mediante un transductor no invasivo de bajo costo.
 
 Si bien el sistema aún requiere calibración formal contra un método clínico de referencia, los resultados preliminares validan el concepto de tonometría radial integrada y abren la puerta al desarrollo de herramientas para la estimación de rigidez arterial y parámetros hemodinámicos derivados.
+
+---
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fprototipado.github.io%2Ftutorial%2Ftonometro%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Visitas&edge_flat=false)](https://hits.seeyoufarm.com)
