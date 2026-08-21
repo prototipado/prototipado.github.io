@@ -93,3 +93,8 @@ Ahora bien, en el uso real esto cambia bastante. Si el sensor se calibra en cero
   </video>
 </p>
 
+
+
+---
+
+[![Hits](https://hits.sh/prototipado.github.io/tutorial/algometro/.svg)](https://hits.sh/prototipado.github.io/tutorial/algometro/)
