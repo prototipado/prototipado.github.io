@@ -11,6 +11,7 @@ tags:
 layout: single
 toc: true
 toc_sticky: true
+excerpt: "Desarrollo de un algómetro de mano portátil para la medición del umbral de dolor, con sensor de fuerza Honeywell, pantalla OLED, encoder rotatorio y estructura impresa en 3D."
 ---
 
 ## Introducción

@@ -11,6 +11,7 @@ tags:
 layout: single
 toc: true
 toc_sticky: true
+excerpt: "Diseño y prototipado de un tonómetro de pulso no invasivo integrado con el BioAmp, para el registro simultáneo de ECG y presión arterial radial orientado a la estimación de rigidez arterial."
 ---
 
 ## Introducción
