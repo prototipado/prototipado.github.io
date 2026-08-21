@@ -28,11 +28,11 @@ Este sistema no resultó muy efectivo, al menos en nuestra implementación, con 
 
 Decidimos rediseñar el sistema desde cero, modificando el transductor, buscando algo más fácil de utilizar. Durante la investigación bibliográfica que emprendemos cuando llevamos adelante un proyecto, una de las fuentes de búsqueda son patentes. Una que nos resultó particularmente interesante es la patente [US20050177047A1](https://patents.google.com/patent/US20050177047A1/en); "Device for, and a method of, transcutaneous pressure waveform sensing of an artery and a related target apparatus".
 
-{% include figure image_path="/assets/images/tonometro/US20050177047A1-20050811-D00000.png" alt="Patente US20050177047A1" caption="Figura de la patente US20050177047A1 que describe el sistema de tonometría con cono de gel." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/US20050177047A1-20050811-D00000.png" alt="Patente US20050177047A1" caption="Figura de la patente US20050177047A1 que describe el sistema de tonometría con cono de gel." class="align-center" %}
 
 En la imagen del dispositivo se podía observar el sensor de presión, una suerte de cono de gel que transmitía la presión arterial desde la superficie exterior al sensor. Ya estábamos en la búsqueda de sensores de presión invasiva para evaluar su reutilización, y de la imagen nos pareció reconocer el encapsulado del sensor utilizado, si bien no estamos 100% seguros se parece mucho al [MPX2300DT1](https://www.nxp.com/docs/en/data-sheet/MPX2300D.pdf) de NXP. 
 
-{% include figure image_path="/assets/images/tonometro/MPX2300DT1.png" alt="Sensor MPX2300DT1" caption="Sensor de presión MPX2300DT1 (NXP), encapsulado compatible con el utilizado en sistemas de monitoreo invasivo." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/MPX2300DT1.png" alt="Sensor MPX2300DT1" caption="Sensor de presión MPX2300DT1 (NXP), encapsulado compatible con el utilizado en sistemas de monitoreo invasivo." class="align-center" %}
 
 Este sensor es un transductor de presión de silicio de 0 a 2.3 MPa (0 a 23 bar) con salida de voltaje compensada en temperatura, utilizado en dispositivos de monitoreo de presión invasiva.  
 
@@ -41,17 +41,17 @@ Este sensor es un transductor de presión de silicio de 0 a 2.3 MPa (0 a 23 bar)
 
 Comenzamos el modelado CAD del dispositivo con el objetivo de reproducir la geometría descrita en la patente. Para el cono de gel se optó por utilizar silicona, diseñando y fabricando previamente un molde en PLA mediante impresión 3D. El molde se fijaba en una morsa para asegurar estabilidad durante el proceso de colado.
 
-{% include figure image_path="/assets/images/tonometro/corte_a.png" alt="Corte transversal del dispositivo" caption="Corte longitudinal del modelo CAD mostrando la estructura del sensor, la pieza amarilla sostiene el sensor, la pieza verde sujeta el cable. La pieza frontal se imprime en TPU, donde la superficie de contacto es de solo un par de capas de material." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/corte_a.png" alt="Corte transversal del dispositivo" caption="Corte longitudinal del modelo CAD mostrando la estructura del sensor, la pieza amarilla sostiene el sensor, la pieza verde sujeta el cable. La pieza frontal se imprime en TPU, donde la superficie de contacto es de solo un par de capas de material." class="align-center" %}
 
 
 
 En lugar de emplear silicona líquida convencional (RTV), se utilizó una pistola termofusible. Aunque coloquialmente se las denomina “pistolas de silicona”, las barras empleadas están compuestas en realidad por polímeros termoplásticos (habitualmente EVA u otros copolímeros). No obstante, debido a la similitud en la consistencia final del material solidificado y su facilidad de procesamiento, se decidió evaluar esta alternativa como solución práctica y de bajo costo. 
 
-{% include figure image_path="/assets/images/tonometro/molde_A.png" alt="Molde para cono de gel" caption="Molde impreso en PLA fijado para el colado del cono de gel. Se puede ver el orificio de venteo en la parte superior, para asegurar el llenado completo de la cavidad del cono. Además se colocó papel de aluminio en la entrada del molde, a fin de proteger el PLA de la pistola termofusible." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/molde_A.png" alt="Molde para cono de gel" caption="Molde impreso en PLA fijado para el colado del cono de gel. Se puede ver el orificio de venteo en la parte superior, para asegurar el llenado completo de la cavidad del cono. Además se colocó papel de aluminio en la entrada del molde, a fin de proteger el PLA de la pistola termofusible." class="align-center" %}
 
 Fueron necesarios múltiples prototipos, tanto del molde como del cono de gel, para optimizar la geometría y lograr un buen "colado". La estructura del resto del dispositivo también pasó por varias iteraciones, buscando una geometría que permitiera sujetar el sensor de forma segura y que a la vez fuera cómoda de utilizar.
 
-{% include figure image_path="/assets/images/tonometro/prototipos.jpg" alt="Evolución de prototipos" caption="Diferentes iteraciones de los moldes y la estructura del dispositivo, se buscaba optimizar funcionalidad y facilidad en el armado." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/prototipos.jpg" alt="Evolución de prototipos" caption="Diferentes iteraciones de los moldes y la estructura del dispositivo, se buscaba optimizar funcionalidad y facilidad en el armado." class="align-center" %}
 
 ## Pruebas
 
@@ -65,7 +65,7 @@ En el video podemos ver la utilización del prototipo conectado al BioAmp y visu
 
 Si además se suma la captura de la señal de ECG, se obtienen registros como el siguiente:
 
-{% include figure image_path="/assets/images/tonometro/ECG_presion.png" alt="Registro ECG y Presión" caption="Captura simultánea de ECG y curva de presión arterial radial obtenida con el prototipo final." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/tonometro/ECG_presion.png" alt="Registro ECG y Presión" caption="Captura simultánea de ECG y curva de presión arterial radial obtenida con el prototipo final." class="align-center" %}
 
 El rediseño permitió obtener una señal de presión con morfología compatible con una onda de pulso radial fisiológica, evitando las limitaciones dinámicas del sistema hidráulico inicial. La integración con el BioAmp demostró la viabilidad de registrar simultáneamente ECG y presión arterial mediante un transductor no invasivo de bajo costo.
 
