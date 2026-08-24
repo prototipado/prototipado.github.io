@@ -325,3 +325,8 @@ defaults:
       share: true
       related: true
       toc_label: "En esta página"
+  # Google verification file - exclude from sitemap
+  - scope:
+      path: "googlebdb5815ee85350ce.html"
+    values:
+      sitemap: false
