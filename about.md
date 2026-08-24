@@ -3,7 +3,11 @@ layout: single
 title: "Sobre Nosotros"
 permalink: /about/
 author_profile: true
+description: "Conocé al equipo del Laboratorio de Prototipado Electrónico y 3D de la Facultad de Ingeniería (UNER). Diseño de sistemas embebidos para tecnología médica y agropecuaria."
+header:
+  og_image: /assets/images/lab_logo.png
 ---
+
 
 Bienvenido al blog del **Laboratorio de Prototipado Electrónico y 3D**.
 
