@@ -82,7 +82,7 @@ Esto nos llevó a agregar una funcionalidad que, si bien no era necesaria para e
 La idea detrás de esta incorporación era ir un paso más allá de simplemente generar señales de ECG. A futuro, queríamos utilizar este hardware como parte de un sistema capaz de simular la interacción entre un corazón y un marcapasos, avanzando eventualmente hacia la implementación de un modelo in silico del corazón.
 En ese momento todavía era una idea a futuro, pero nos pareció interesante dejar preparada la plataforma para que el mismo dispositivo pudiera formar parte de ese desarrollo.
  
-{% include figure popup=true image_path="/assets/images/generador_ecg/final_1.jpeg" alt="Prototipo final" caption="Prototipo final del generador de ECG. Se pueden ver secciones de filamento transparente de PETG usados como 'lightpipes' para guiar la luz de los leds hacia el exterior del gabinete. class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/final_1.jpeg" alt="Prototipo final" caption="Prototipo final del generador de ECG. Se pueden ver secciones de filamento transparente de PETG usados como 'lightpipes' para guiar la luz de los leds hacia el exterior del gabinete." class="align-center" %}
 
 ## Generación y procesamiento de las señales
 Otra de las mejoras que incorporamos fue ampliar las posibilidades de generación de señales. Además de las señales de ECG, agregamos señales de prueba básicas —senoidales, cuadradas y triangulares— con la posibilidad de modificar directamente su amplitud, offset y frecuencia.
@@ -123,3 +123,8 @@ Pero había además una limitación que no era solamente técnica. Al repetir in
 Esto empezó a ser especialmente evidente cuando pensamos en lo que queríamos hacer con el generador. No nos alcanzaba con tener un ECG que "se pareciera" a un registro real; queríamos poder modificar su frecuencia cardíaca, introducir variabilidad, cambiar su morfología y simular distintas condiciones sin tener que buscar y almacenar un nuevo registro para cada caso. La primera versión seguía siendo muy útil para probar la electrónica y verificar la adquisición de señales reales, pero tenía un límite bastante claro: no estábamos simulando un corazón, estábamos reproduciendo una grabación de un corazón. Y justamente esa diferencia fue la que nos llevó a buscar una forma de generar el ECG a partir de un modelo matemático.
 
 Por lo pronto, los archivos necesarios para la implementación de esta primer versión del generador están disponibles en GitHub, en el [repo del Laboratorio](https://github.com/prototipado/ECG_Phantom).
+
+
+---
+
+[![Hits](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg/.svg)](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg/)
