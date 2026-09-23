@@ -84,6 +84,13 @@ En ese momento todavía era una idea a futuro, pero nos pareció interesante dej
  
 {% include figure popup=true image_path="/assets/images/generador_ecg/final_1.jpg" alt="Prototipo final" caption="Prototipo final del generador de ECG. Se pueden ver secciones de filamento transparente de PETG usados como 'lightpipes' para guiar la luz de los leds hacia el exterior del gabinete." class="align-center" %}
 
+
+<p align="center">
+  <video controls width="80%">
+    <source src="/assets/images/generador_ecg/final_3.mp4" type="video/mp4">
+  </video>
+</p>
+
 ## Generación y procesamiento de las señales
 Otra de las mejoras que incorporamos fue ampliar las posibilidades de generación de señales. Además de las señales de ECG, agregamos señales de prueba básicas —senoidales, cuadradas y triangulares— con la posibilidad de modificar directamente su amplitud, offset y frecuencia.
 Estas señales fueron particularmente útiles durante el desarrollo, ya que nos permitieron probar cada etapa del sistema utilizando formas de onda conocidas y fácilmente parametrizables. De esta manera podíamos verificar por separado la generación mediante PWM, el funcionamiento de los filtros y la respuesta de las salidas antes de pasar a señales más complejas.
