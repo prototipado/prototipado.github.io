@@ -38,7 +38,7 @@ Nuestro primer paso fue, entonces, recrear este dispositivo. Antes de modificarl
 
 Ese primer prototipo resulto de utilidad para realizar las primeras pruebas de adquisión de señales con el prototipo del electrocardiógrafo que estábamos desarrollando. 
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/setup.jpeg" alt="Setup de prueba con el dispositivo y el electrocardiografo en el que se estaba trabajando" caption="Setup de prueba con el dispositivo y el electrocardiografo en el que se estaba trabajando" class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/setup.jpg" alt="Setup de prueba con el dispositivo y el electrocardiografo en el que se estaba trabajando" caption="Setup de prueba con el dispositivo y el electrocardiografo en el que se estaba trabajando" class="align-center" %}
 
 
 Inmediatamente después de recrear el dispositivo original, nos pusimos a trabajar en mejorar sus capacidades.
@@ -68,21 +68,21 @@ Antes de llevar el circuito a la placa, realizamos distintas simulaciones para v
 ## Simulación
 Como se puede ver en la imágen, la simulación se llevó a cabo utilizando LTspice, un simulador de circuitos electrónicos gratuito desarrollado por Analog Devices.
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/sim.jpeg" alt="Simulación del filtro pasa-bajo activo." caption="Simulación del filtro pasa-bajo activo." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/sim.png" alt="Simulación del filtro pasa-bajo activo." caption="Simulación del filtro pasa-bajo activo." class="align-center" %}
 
 La salida de los filtros pasa por un divisor resistivo que reduce la señal, un segundo operacional condigurado como seguidor emisor desacopla el divisor de una resistencia de salida de 470 ohm, que pretende simular la impedancia de tejido.
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/Figure_1.jpeg" alt="Simulación del filtro pasa-bajo activo." caption="Resultados de la simulacion temporal, desde arriba hacia abajo; salida del ecg luego del divisor resistivo, señal original, señal de PWM filtrada, señal de PWM sin filtrar." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/Figure_1.png" alt="Simulación del filtro pasa-bajo activo." caption="Resultados de la simulacion temporal, desde arriba hacia abajo; salida del ecg luego del divisor resistivo, señal original, señal de PWM filtrada, señal de PWM sin filtrar." class="align-center" %}
 
 Además, por ese mismo momento estábamos a punto de comenzar en el Laboratorio un nuevo proyecto: el desarrollo de un marcapasos externo.
 Esto nos llevó a agregar una funcionalidad que, si bien no era necesaria para el funcionamiento del generador de ECG, podía resultar muy útil a futuro. Incorporamos tres circuitos de entrada conectados al ADC de la Raspberry Pi Pico, destinados a detectar los pulsos generados por un marcapasos.
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/pace_sim.jpeg" alt="Circuito de entrada para evaluacion de marcapasos." caption="Circuito de entrada para evaluacion de marcapasos." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/pace_sim.png" alt="Circuito de entrada para evaluacion de marcapasos." caption="Circuito de entrada para evaluacion de marcapasos." class="align-center" %}
 
 La idea detrás de esta incorporación era ir un paso más allá de simplemente generar señales de ECG. A futuro, queríamos utilizar este hardware como parte de un sistema capaz de simular la interacción entre un corazón y un marcapasos, avanzando eventualmente hacia la implementación de un modelo in silico del corazón.
 En ese momento todavía era una idea a futuro, pero nos pareció interesante dejar preparada la plataforma para que el mismo dispositivo pudiera formar parte de ese desarrollo.
  
-{% include figure popup=true image_path="/assets/images/generador_ecg/final_1.jpeg" alt="Prototipo final" caption="Prototipo final del generador de ECG. Se pueden ver secciones de filamento transparente de PETG usados como 'lightpipes' para guiar la luz de los leds hacia el exterior del gabinete." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/final_1.jpg" alt="Prototipo final" caption="Prototipo final del generador de ECG. Se pueden ver secciones de filamento transparente de PETG usados como 'lightpipes' para guiar la luz de los leds hacia el exterior del gabinete." class="align-center" %}
 
 ## Generación y procesamiento de las señales
 Otra de las mejoras que incorporamos fue ampliar las posibilidades de generación de señales. Además de las señales de ECG, agregamos señales de prueba básicas —senoidales, cuadradas y triangulares— con la posibilidad de modificar directamente su amplitud, offset y frecuencia.
@@ -91,11 +91,11 @@ Pero la parte más interesante vino al trabajar con señales de ECG reales.
 Para esto utilizamos la Lobachevsky University Electrocardiography Database (LUDB), una base de datos que contiene registros de ECG de 12 derivaciones. Desarrollamos un notebook en Python encargado de tomar estos registros y transformarlos en datos que pudieran ser utilizados directamente por el firmware de la Raspberry Pi Pico.
 El primer paso es leer el registro y obtener las 12 derivaciones. A partir de una de ellas se detectan los picos correspondientes a los complejos QRS, que utilizamos como referencia para identificar los distintos ciclos cardíacos presentes en el registro.
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/jupyter_1.jpeg" alt="Ejemplo de senal ecg de la base de datos LUDB." caption="Ejemplo de senal ecg de la base de datos LUDB." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/jupyter_1.png" alt="Ejemplo de senal ecg de la base de datos LUDB." caption="Ejemplo de senal ecg de la base de datos LUDB." class="align-center" %}
 
 En lugar de seleccionar simplemente un latido cualquiera, buscamos aquel que pudiera repetirse de manera continua. Para cada ciclo posible calculamos la diferencia entre su valor inicial y final, considerando todas las derivaciones, y seleccionamos el que presenta la menor diferencia. De esta manera obtenemos un latido que, al comenzar nuevamente después de finalizar, genera una transición lo más suave posible entre ciclos.
 
-{% include figure popup=true image_path="/assets/images/generador_ecg/jupyter_2.jpeg" alt="Ciclo de ECG seleccionado para generacion." caption="Ciclo de ECG seleccionado para generacion." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/generador_ecg/jupyter_2.png" alt="Ciclo de ECG seleccionado para generacion." caption="Ciclo de ECG seleccionado para generacion." class="align-center" %}
 
 Una vez seleccionado el ciclo, extraemos las muestras correspondientes a las nueve derivaciones que utilizamos en el generador y las llevamos a una escala adecuada para su representación como valores enteros. En nuestro caso, los datos son reescalados mediante la operación 2000 + 30000, quedando centrados alrededor del valor 30000.
 
@@ -107,7 +107,7 @@ Este procesamiento también nos permitió algo que buscábamos desde el comienzo
 De esta manera, el generador pasó a contar con dos grandes grupos de señales: por un lado, señales sintéticas y parametrizables para las pruebas del hardware; y por otro, señales fisiológicas reales, procesadas y preparadas para su reproducción en el dispositivo.
 
 
-## Comununicación y CLI
+## Comunicación y CLI
 Para facilitar y automatizar testeo decidimos tambien agregar una CLI al dispositivo, para poder modificar mediante comandos el comportamiento del mismo, por ejemplo el tipo de señal (sintética o real) y sus parámetros.
 Luego creeamos una pequeña App en Python con una interfaz grafica para controlar el dispositivo de manera mas amigable. Otra funcionalidad importante de esta app es que nos permite ver en tiempo real las senales que se están generando. Esto permitiria en un futuro comparar la señal generada con una hipotetica señal adquirida y evaluar la perfimrance del sistema de adquisicion, una manera de "cerrar el lazo".
 
