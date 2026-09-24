@@ -20,7 +20,7 @@ A mediados de 2024 surgió, dentro del Laboratorio, la idea de desarrollar un ge
 Para ese momento, nosotros ya llevábamos un tiempo trabajando en el desarrollo de un electrocardiógrafo inalámbrico de 12 derivaciones. Como parte de ese trabajo necesitábamos probar el equipo y, hasta entonces, las pruebas las realizábamos generalmente utilizando un generador de funciones que incorporaba algunas señales biológicas. El problema era que este equipo estaba limitado a un único canal de ECG.
 Contar con un generador capaz de producir múltiples derivaciones y, además, permitirnos personalizar las señales generadas nos resultaba especialmente atractivo. No solo nos permitiría hacer pruebas más completas sobre el electrocardiógrafo, sino también generar distintas condiciones y señales para evaluar su comportamiento, y la posibilidad de automatizar sesiones de testeo.
 A partir de esa necesidad comenzó el proyecto que vamos a documentar en esta serie de posts. La intención es recorrer el camino que seguimos durante el desarrollo: desde la recreación del diseño original, pasando por las pruebas y los problemas que fuimos encontrando, hasta las modificaciones y mejoras que finalmente fuimos incorporando.
-El punto de partida era una Raspberry Pi Pico (RP2040) programada en Arduino. El microcontrolador tenía almacenados los datos de las señales y, a partir de ellos, generaba mediante PWM las señales correspondientes a las 10 derivaciones convencionales del ECG.
+El punto de partida era una [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico//) (RP2040) programada en Arduino. El microcontrolador tenía almacenados los datos de las señales y, a partir de ellos, generaba mediante PWM las señales correspondientes a las 10 derivaciones convencionales del ECG.
 Como la salida del microcontrolador era una señal PWM, esta debía ser acondicionada para obtener una señal analógica. Para ello, las salidas pasaban por una serie de filtros pasa-bajos pasivos, encargados de atenuar la componente de alta frecuencia del PWM y reconstruir la forma de onda del ECG.
 
 
@@ -52,7 +52,7 @@ Todo el diseño del gabiente lo fuimos realizando en Fusion360, pasando por vari
 {% include figure popup=true image_path="/assets/images/generador_ecg/evol.png" alt="Evolución del generador de ECG" caption="Evolución del generador de ECG." class="align-center" %}
 
 ## El diseño electrónico
-El diseño del circuito también fue pasando por varias etapas. A medida que avanzábamos con el desarrollo y entendíamos mejor qué necesitábamos del dispositivo, fuimos modificando tanto la electrónica como la forma de acondicionar las señales. En primera medida cambiamos por una Raspberry Pi Pico 2, con un RP2350, para poder mejorar el rendimiento del dispositivo. Si bien el microcontrolador no era el cuello de botella del sistema, si nos permitía contar con más memoria y un procesador mas rápido. 
+El diseño del circuito también fue pasando por varias etapas. A medida que avanzábamos con el desarrollo y entendíamos mejor qué necesitábamos del dispositivo, fuimos modificando tanto la electrónica como la forma de acondicionar las señales. En primera medida cambiamos por una [Raspberry Pi Pico 2](https://www.raspberrypi.com/products/raspberry-pi-pico-2/) (RP2350), para poder mejorar el rendimiento del dispositivo. Si bien el microcontrolador no era el cuello de botella del sistema, si nos permitía contar con más memoria y un procesador mas rápido. 
 
 <p align="center">
   <video controls width="80%">
@@ -61,16 +61,16 @@ El diseño del circuito también fue pasando por varias etapas. A medida que ava
 </p>
 
 
-La implementación final cuenta con filtros pasa-bajos activos, específicamente Sallen-Key, diseñados para reconstruir las señales analógicas a partir de las salidas PWM de la Raspberry Pi Pico. El diseño estuvo bastante influenciado por el uso de componentes que ya teníamos disponibles en el laboratorio. Los operacionale son OPA2333, de Texas Instruments, amplificadores operacionales cuya principal caracteristicas que nos interesaba es el hecho qde que son "rail-to-rail", lo que significa que pueden manejar voltajes de entrada y salida que se acercan mucho a los de alimentación. Buscando que componentes pasivos teniamos a disponibilidad, llegamos a una combinacion que nos permitia tener una fc de 256Hz, adecuada para la aplicación.
+La implementación final cuenta con filtros pasa-bajos activos, específicamente Sallen-Key, diseñados para reconstruir las señales analógicas a partir de las salidas PWM de la Raspberry Pi Pico. El diseño estuvo bastante influenciado por el uso de componentes que ya teníamos disponibles en el laboratorio. Los operacionales son [OPA2335](https://www.ti.com/product/OPA2335) de Texas Instruments, amplificadores operacionales cuya principal caracteristicas que nos interesaba es el hecho qde que son "rail-to-rail", lo que significa que pueden manejar voltajes de entrada y salida que se acercan mucho a los de alimentación. Buscando que componentes pasivos teniamos a disponibilidad, llegamos a una combinacion que nos permitia tener una fc de 256Hz, adecuada para la aplicación.
 
 Antes de llevar el circuito a la placa, realizamos distintas simulaciones para verificar su comportamiento y ajustar los componentes. Esto nos permitió evaluar la respuesta en frecuencia, la atenuación de la componente de alta frecuencia del PWM y la forma de onda obtenida a la salida.
 
 ## Simulación
-Como se puede ver en la imágen, la simulación se llevó a cabo utilizando LTspice, un simulador de circuitos electrónicos gratuito desarrollado por Analog Devices.
+Como se puede ver en la imágen, la simulación se llevó a cabo utilizando [LTspice](https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html), un simulador de circuitos electrónicos gratuito desarrollado por Analog Devices.
 
 {% include figure popup=true image_path="/assets/images/generador_ecg/sim.png" alt="Simulación del filtro pasa-bajo activo." caption="Simulación del filtro pasa-bajo activo." class="align-center" %}
 
-La salida de los filtros pasa por un divisor resistivo que reduce la señal, un segundo operacional condigurado como seguidor emisor desacopla el divisor de una resistencia de salida de 470 ohm, que pretende simular la impedancia de tejido.
+La salida de los filtros pasa por un divisor resistivo que reduce la señal, un segundo operacional configurado como seguidor emisor desacopla el divisor de una resistencia de salida de 470 ohm, que pretende simular la impedancia de tejido.
 
 {% include figure popup=true image_path="/assets/images/generador_ecg/Figure_1.png" alt="Simulación del filtro pasa-bajo activo." caption="Resultados de la simulacion temporal, desde arriba hacia abajo; salida del ecg luego del divisor resistivo, señal original, señal de PWM filtrada, señal de PWM sin filtrar." class="align-center" %}
 
@@ -95,7 +95,7 @@ En ese momento todavía era una idea a futuro, pero nos pareció interesante dej
 Otra de las mejoras que incorporamos fue ampliar las posibilidades de generación de señales. Además de las señales de ECG, agregamos señales de prueba básicas —senoidales, cuadradas y triangulares— con la posibilidad de modificar directamente su amplitud, offset y frecuencia.
 Estas señales fueron particularmente útiles durante el desarrollo, ya que nos permitieron probar cada etapa del sistema utilizando formas de onda conocidas y fácilmente parametrizables. De esta manera podíamos verificar por separado la generación mediante PWM, el funcionamiento de los filtros y la respuesta de las salidas antes de pasar a señales más complejas.
 Pero la parte más interesante vino al trabajar con señales de ECG reales.
-Para esto utilizamos la Lobachevsky University Electrocardiography Database (LUDB), una base de datos que contiene registros de ECG de 12 derivaciones. Desarrollamos un notebook en Python encargado de tomar estos registros y transformarlos en datos que pudieran ser utilizados directamente por el firmware de la Raspberry Pi Pico.
+Para esto utilizamos la [Lobachevsky University Electrocardiography Database (LUDB)](https://www.physionet.org/content/ludb/1.0.1/), una base de datos que contiene registros de ECG de 12 derivaciones. Desarrollamos un notebook en Python encargado de tomar estos registros y transformarlos en datos que pudieran ser utilizados directamente por el firmware de la Raspberry Pi Pico.
 El primer paso es leer el registro y obtener las 12 derivaciones. A partir de una de ellas se detectan los picos correspondientes a los complejos QRS, que utilizamos como referencia para identificar los distintos ciclos cardíacos presentes en el registro.
 
 {% include figure popup=true image_path="/assets/images/generador_ecg/jupyter_1.png" alt="Ejemplo de senal ecg de la base de datos LUDB." caption="Ejemplo de senal ecg de la base de datos LUDB." class="align-center" %}
@@ -106,7 +106,7 @@ En lugar de seleccionar simplemente un latido cualquiera, buscamos aquel que pud
 
 Una vez seleccionado el ciclo, extraemos las muestras correspondientes a las nueve derivaciones que utilizamos en el generador y las llevamos a una escala adecuada para su representación como valores enteros. En nuestro caso, los datos son reescalados mediante la operación 2000 + 30000, quedando centrados alrededor del valor 30000.
 
-Este centrado a media escala responde al funcionamiento de la Raspberry Pi Pico: al alimentarse con una fuente única (0V a 3.3\V) y operar con una resolución de PWM de 16 bits (0 a 65535), el valor 30000 establece un nivel de continua o masa virtual de aproximadamente 1.51V (45.7 de ciclo de trabajo). De este modo, se dispone del margen necesario para representar tanto las deflexiones positivas (ondas P, R, T) como las negativas (ondas Q, S) de la señal del ECG sin recortes en 0V.
+Este centrado a media escala responde al funcionamiento de la Raspberry Pi Pico: al alimentarse con una fuente única (0V a 3.3V) y operar con una resolución de PWM de 16 bits (0 a 65535), el valor 30000 establece un nivel de continua o masa virtual de aproximadamente 1.51V (45.7 de ciclo de trabajo). De este modo, se dispone del margen necesario para representar tanto las deflexiones positivas (ondas P, R, T) como las negativas (ondas Q, S) de la señal del ECG sin recortes en 0V.
 
 Finalmente, todas estas muestras se convierten en enteros y se empaquetan automáticamente en un archivo de cabecera .h. El archivo contiene el array con las muestras del latido, junto con una estructura que almacena información adicional del registro, como el ritmo y las características asociadas a la señal.
 El resultado es, entonces, un latido de ECG real convertido en un formato directamente utilizable por el firmware. La Raspberry Pi Pico no necesita procesar la señal original ni acceder a la base de datos: simplemente dispone en memoria de las muestras del ciclo y puede reproducirlas de manera repetitiva a través de las salidas PWM.
