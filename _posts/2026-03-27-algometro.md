@@ -2,6 +2,9 @@
 title: "Algómetro portátil"
 author: Juan I. Cerrudo
 date: 2026-02-05
+lang: es
+page_id: portable-algometer
+permalink: /tutorial/algometro/
 categories:
   - Tutorial
 tags:

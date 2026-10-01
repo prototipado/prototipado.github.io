@@ -16,6 +16,12 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "es-ES"
+languages                : ["es", "en"]
+default_lang             : "es"
+parallel_localization    : false
+exclude_from_localization:
+  - assets
+  - sitemap.xml
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Laboratorio de Prototipado Electrónico y 3D"
 title_separator          : "-"
@@ -220,6 +226,7 @@ kramdown:
 sass:
   sass_dir: _sass
   style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  sourcemap: never
 
 
 # Outputting
@@ -255,6 +262,7 @@ pagination:
 
 # Plugins (previously gems:)
 plugins:
+  - jekyll-polyglot
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -263,6 +271,7 @@ plugins:
 
 # mimic GitHub Pages with --safe
 whitelist:
+  - jekyll-polyglot
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist

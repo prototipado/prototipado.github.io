@@ -2,6 +2,9 @@
 title: "Tonómetro de pulso"
 author: Juan I. Cerrudo
 date: 2026-02-05
+lang: es
+page_id: pulse-tonometer
+permalink: /tutorial/tonometro/
 categories:
   - Tutorial
 tags:
