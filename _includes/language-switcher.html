@@ -1,20 +1,22 @@
 <li class="masthead__menu-item language-switcher" aria-label="Idioma / Language">
-  {% for language in site.languages %}
-    {% assign translation_permalink = page.permalink_lang[language] %}
-    {% if translation_permalink %}
-      {% if language == site.default_lang %}
-        {% capture language_url %}{{ site.baseurl }}{{ translation_permalink }}{% endcapture %}
+  <span class="language-switcher__options">
+    {% for language in site.languages %}
+      {% assign translation_permalink = page.permalink_lang[language] %}
+      {% if translation_permalink %}
+        {% if language == site.default_lang %}
+          {% capture language_url %}{{ site.baseurl }}{{ translation_permalink }}{% endcapture %}
+        {% else %}
+          {% capture language_url %}{{ site.baseurl }}/{{ language }}{{ translation_permalink }}{% endcapture %}
+        {% endif %}
       {% else %}
-        {% capture language_url %}{{ site.baseurl }}/{{ language }}{{ translation_permalink }}{% endcapture %}
+        {% capture language_url %}{{ site.baseurl }}/{% unless language == site.default_lang %}{{ language }}/{% endunless %}{% endcapture %}
       {% endif %}
-    {% else %}
-      {% capture language_url %}{{ site.baseurl }}/{% unless language == site.default_lang %}{{ language }}/{% endunless %}{% endcapture %}
-    {% endif %}
-    {% if language == site.active_lang %}
-      <span aria-current="page">{{ language | upcase }}</span>
-    {% else %}
-      <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} lang="{{ language }}">{{ language | upcase }}</a>
-    {% endif %}
-    {% unless forloop.last %}<span aria-hidden="true"> | </span>{% endunless %}
-  {% endfor %}
+      {% if language == site.active_lang %}
+        <span aria-current="page">{{ language | upcase }}</span>
+      {% else %}
+        <a {% static_href %}href="{{ language_url }}"{% endstatic_href %} lang="{{ language }}">{{ language | upcase }}</a>
+      {% endif %}
+      {% unless forloop.last %}<span aria-hidden="true">|</span>{% endunless %}
+    {% endfor %}
+  </span>
 </li>
