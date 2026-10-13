@@ -68,7 +68,7 @@ El resultado fue un mapa completo del protocolo extraído de las clases Java dec
 
 Otra de las líneas de investigación fue por el hardware en sí: abrimos el sensor y le sacamos fotos a la placa. 
 
-{% include figure popup=true image_path="/assets/images/sensor_angi/top_angi.JPG" alt="Vista superior de la placa del sensor ANGi" caption="Vista superior de la PCB del sensor ANGi, con el SoC nRF52832 en encapsulado BGA, sensores y el soporte para pila botón CR2032. La PCB está pegada al gabinate, al sacarla se debe haber flexionado lo suficiente como para cortar algunas pistas, se puede ver un jumper soldado puentenado dos punto sde VCC, necesario para que vuelva a funcionar." class="align-center" %}
+{% include figure popup=true image_path="/assets/images/sensor_angi/top_angi.JPG" alt="Vista superior de la placa del sensor ANGi" caption="Vista superior de la PCB del sensor ANGi, con el SoC nRF52832 en encapsulado BGA, sensores y el soporte para pila botón CR2032. La PCB está pegada al gabinate, al sacarla se debe haber flexionado lo suficiente como para cortar algunas pistas, se puede ver un jumper soldado puentenado dos punto de VCC, necesario para que vuelva a funcionar." class="align-center" %}
 
 {% include figure popup=true image_path="/assets/images/sensor_angi/bottom_angi.JPG" alt="Vista inferior de la placa del sensor ANGi" caption="Vista inferior de la PCB con los puntos de prueba (Test Points)." class="align-center" %}
 
@@ -119,9 +119,9 @@ OpenCode usó 3 modelos distintos a lo largo de la sesión, todos del tier gratu
 
 ### a. Desarrollo con AngiTester
 
-Antes de construir la app final (OpenAngi), necesitamos contar con un "banco de pruebas de laboratorio" en Android. Así nació **AngiTester** — una aplicación ligera de 6 archivos [Kotlin](https://kotlinlang.org/) cuyo único objetivo era interactuar directamente con el sensor real SHS-D33F y validar cada hipótesis byte a byte.
+Antes de construir la app final (OpenAngi), necesitamos contar con un "banco de pruebas de laboratorio" en Android. Así nació **AngiTester** — una aplicación ligera de 6 archivos [Kotlin](https://kotlinlang.org/) cuyo único objetivo era interactuar directamente con el sensor real SHS-D33F (todos los sensores se presentan como SHS-"ultimos 4 digitos de la MAC") y validar cada hipótesis byte a byte.
 
-La pantalla principal de AngiTester se divide en dos zonas clave para inspeccionar el tráfico BLE en tiempo real:
+La pantalla principal de AngiTester se divide en tres zonas clave para inspeccionar el tráfico BLE en tiempo real:
 
 - **Terminal de comandos en vivo (`log [HH:mm:ss.SSS]`)**:
   - Caja tipo consola con auto-scroll inteligente (se pausa si el usuario sube a leer el historial y retoma al volver abajo).
@@ -129,7 +129,7 @@ La pantalla principal de AngiTester se divide en dos zonas clave para inspeccion
 - **Gráfico custom IMU en tiempo real (`ImuGraphView.kt`)**:
   - Grafica a 5 Hz los 3 ejes del acelerómetro y la velocidad angular en modo TEST.
   - Indexado por número de muestra (`sampleNumber`): evita distorsiones o "saltos" horizontales cuando las notificaciones BLE llegan en ráfagas.
-  - Auto-escala Y suavizada para prevenir que un pico repentino aplane la curva continua.
+  - Auto-escala eje Y suavizada para prevenir que un pico repentino aplane la curva continua.
 - **Botonera de comandos directa y extendida**:
   - Modos directos (`afd0ffa1`): Activate (sincroniza RTC + MODE `0x01`), Normal (`0x00`), Test (`0x40` streaming IMU).
   - Comandos extendidos (`BLOCK_DATA afd0ffa4` + trigger `0x20`): versión de firmware (`0xC3`), test de acelerómetro/giroscopio (`0xC0/0xC1`), control de LEDs (`0xFE/0xC2`), simulación de impacto (`0xFB`), lectura/reporte de eventos grabados (`0x80/0x81`), entre otros.
@@ -302,7 +302,7 @@ Además: 720 trazas de razonamiento, 256 respuestas de texto, y 8 re-compactacio
 
 La IA no reemplazó el trabajo — nosotros seguimos siendo los que conectábamos el sensor, corríamos los scripts, sacábamos las fotos, abríamos el dispositivo, decompilábamos el APK, y tomábamos las decisiones de diseño. Pero aceleró brutalmente cada paso intermedio: en vez de buscar datasheets, leer foros, y escribir parsers de bytes a mano, la conversación con los modelos nos permitió ir de "¿qué es este chip?" a "tenemos un APK firmado y funcionando" en 3 días.
 
-Y es incluso una de las líneas de investigación que estamos incorporando al PID: lograr cerrar el lazo, dar acceso a los LLMs al hardware y a la interacción con herramientas físicas que permitan acelerar el proceso de experimentación.
+Y es incluso una de las líneas de investigación que estamos incorporando al PID: lograr cerrar el lazo, dar acceso a los LLMs al hardware y a la interacción con herramientas físicas que permitan acelerar aún mas el proceso de experimentación.
 
 La combinación de herramientas funcionó bien: 
 - **Claude** (chat web con visión, búsqueda y análisis de imágenes) fue ideal para la fase exploratoria: identificar chips por fotos, armar el plan de ataque y construir scripts incrementales.
@@ -591,11 +591,11 @@ Considerando la autodescarga natural de la pila CR2032, las caídas de tensión 
 
 ## Parte 4: Actualización DFU
 
-Durante el proceso de desramardo del sensor original no fue particularmetne inocuo, la PCB quedó con problemas, ademas de que la apertura del gabinete no fue nada delicada, perdiendose la junta de sellado (IPX7), así que me compré un par de sensores nuevos. Resulta que los sensores venían con un firmware más viejo y eran demasiado sensibles a los golpes, y con la app oficial dada de baja no había forma de actualizarlos. La idea inicial fue tratar de usar el firmware que había extraído con el J-Link y subírselo por Bluetooth, esta vez sin romper el sensor.
+El proceso de desaramado del sensor original no fue particularmetne inocuo, la PCB quedó con problemas, ademas de que la apertura del gabinete no fue nada delicada, perdiendose la junta de sellado (IP67), así que me compré un par de sensores nuevos. Resulta que los sensores venían con un firmware más viejo y eran demasiado sensibles a los golpes, y con la app oficial dada de baja no había forma de actualizarlos. La idea inicial fue tratar de usar el firmware que había extraído con el J-Link y subírselo por Bluetooth, esta vez sin romper el sensor.
 
 ### a. Armado del paquete y primer intento con Claude
 
-Le pasamos el dump a Claude (Sonnet 5.5, en claude.ai) y en pocas iteraciones ordenamos el mapa de memoria: MBR, SoftDevice S132 v3.0.0, una aplicación de unos 79 KB, un bootloader Secure DFU de Nordic y una página de settings cuyo CRC coincidía con el de la app. También salió que el sufijo del nombre del sensor (SHS-6356) se deriva de su MAC. Armamos un paquete DFU con [nRF Util](https://www.nordicsemi.com/Products/Development-tools/nRF-Util) y un cliente en Python con bleak que reinicia el sensor en el bootloader, sube el paquete y deja un log de cada paso. Claude lo probó contra un bootloader simulado, pero el hardware real lo fue corrigiendo: buscó un UUID de DFU que no era (el sensor usa el servicio experimental de Nordic SDK 12.x, 8E400001) y el log mostró el correcto.
+Le pasamos el dump a Claude (Sonnet 5.5, en claude.ai) y en pocas iteraciones ordenamos el mapa de memoria: MBR, SoftDevice S132 v3.0.0, una aplicación de unos 79 KB, un bootloader Secure DFU de Nordic y una página de settings cuyo CRC coincidía con el de la app. Armamos un paquete DFU con [nRF Util](https://www.nordicsemi.com/Products/Development-tools/nRF-Util) y un cliente en Python con bleak que reinicia el sensor en el bootloader, sube el paquete y deja un log de cada paso. Claude lo probó contra un bootloader simulado, pero el hardware real lo fue corrigiendo: buscó un UUID de DFU que no era (el sensor usa el servicio experimental de Nordic SDK 12.x, 8E400001) y el log mostró el correcto.
 
 Con esa corrección el bootloader recibió bien el init packet (el CRC coincidía), pero lo rechazó al validarlo con un error genérico (INVALID_OBJECT) que, en ese bootloader, cubre firma, versión o formato sin decir cuál.
 
@@ -664,7 +664,7 @@ La selección de herramienta no fue aleatoria: cada una mostró ventajas claras 
 
 Todas las herramientas mostraron alucinaciones o errores en alguna instancia — detallados en la [sección g de la Parte 3](#g-revisión-crítica-de-los-archivos-c-y-alucinaciones-detectadas) y en la [sección f sobre el algoritmo de detección de caídas](#f-algoritmo-de-detección-de-caídas). La regla de trabajo fue la misma en todos los casos: verificar cada resultado contra el hardware o el binario original antes de tomar decisiones.
 
-Esta es también una de las líneas de investigación que estamos incorporando al PID del Laboratorio: lograr cerrar el lazo, dar acceso a los LLMs al hardware y a la interacción con herramientas físicas que permitan acelerar el proceso de experimentación.
+Como ya mencionamos, esta es también una de las líneas de investigación que estamos incorporando al PID del Laboratorio: lograr cerrar el lazo, dar acceso a los LLMs al hardware y a la interacción con herramientas físicas que permitan eliminar la necesidad de un usuario presente al menos en la mayor parte del desarrollo.
 
 ---
 

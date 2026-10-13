@@ -115,9 +115,9 @@ OpenCode used 3 different models during the session, all on free tiers:
 
 ### a. Development with AngiTester
 
-Before building the final app (OpenAngi), we needed an Android "lab test bench." That is how **AngiTester** came about: a lightweight app made of 6 [Kotlin](https://kotlinlang.org/) files, whose sole purpose was to interact directly with the real SHS-D33F sensor and validate every hypothesis byte by byte.
+Before building the final app (OpenAngi), we needed an Android "lab test bench." That is how **AngiTester** came about: a lightweight app made of 6 [Kotlin](https://kotlinlang.org/) files, whose sole purpose was to interact directly with the real SHS-D33F sensor (all sensors present as SHS-“last 4 digits of MAC”) and validate every hypothesis byte by byte.
 
-AngiTester's main screen has two key areas for inspecting BLE traffic in real time:
+AngiTester's main screen has three key areas for inspecting BLE traffic in real time:
 
 - **Live command terminal (`log [HH:mm:ss.SSS]`)**:
   - Console-style view with smart auto-scroll (it pauses when the user scrolls up to read the history and resumes when they return to the bottom).
@@ -296,7 +296,7 @@ In addition: 720 reasoning traces, 256 text responses, and 8 context compactions
 
 AI did not replace the work—we were still the ones connecting the sensor, running scripts, taking photos, opening the device, decompiling the APK, and making design decisions. But it dramatically accelerated every intermediate step: instead of searching datasheets, reading forums, and writing byte parsers by hand, conversations with the models took us from "what is this chip?" to "we have a signed, working APK" in 3 days.
 
-This is also one of the research lines we are incorporating into our Laboratory's PID project: closing the loop by granting LLMs access to hardware and to physical tools that can accelerate the experimentation process.
+It is even one of the lines of research we are incorporating into the PID: closing the loop—granting LLMs access to hardware and enabling interaction with physical tools—to further accelerate the experimentation process.
 
 The combination of tools worked well:
 - **Claude** (web chat with vision, search, and image analysis) was ideal for the exploratory phase: identifying chips from photos, putting together an attack plan, and building incremental scripts.
@@ -571,11 +571,11 @@ Considering natural CR2032 self-discharge, voltage drops caused by repeated 21�
 
 ## Part 4: DFU Firmware Update
 
-The disassembly process of the original sensor was not particularly harmless; the PCB ended up with issues, and opening the enclosure was far from delicate, damaging the sealing gasket (IPX7). So I bought a couple of new sensors. It turned out that these sensors came with an older firmware and were overly sensitive to impacts, and with the official app discontinued, there was no way to update them. The initial idea was to try using the firmware extracted with the J-Link and upload it over Bluetooth—this time without damaging the sensor.
+The disassembly process of the original sensor was not particularly harmless; the PCB ended up with issues, and opening the enclosure was far from delicate, damaging the sealing gasket (IP67). So I bought a couple of new sensors. It turned out that these sensors came with an older firmware and were overly sensitive to impacts, and with the official app discontinued, there was no way to update them. The initial idea was to try using the firmware extracted with the J-Link and upload it over Bluetooth—this time without damaging the sensor.
 
 ### a. Building the Package and First Attempt with Claude
 
-We provided the dump to Claude (Sonnet 5.5 on claude.ai), and in a few iterations we organized the memory map: MBR, SoftDevice S132 v3.0.0, an application of approximately 79 KB, a Nordic Secure DFU bootloader, and a settings page whose CRC matched that of the app. It also revealed that the sensor name suffix (SHS-6356) is derived from its MAC address. We built a DFU package using [nRF Util](https://www.nordicsemi.com/Products/Development-tools/nRF-Util) and a Python client with bleak that reboots the sensor into bootloader mode, uploads the package, and logs every step. Claude tested it against a simulated bootloader, but real hardware steered the corrections: it looked for the wrong DFU UUID (the sensor uses the experimental Nordic SDK 12.x service, `8E400001`), and the log revealed the correct one.
+We provided the dump to Claude (Sonnet 5.5 on claude.ai), and in a few iterations we organized the memory map: MBR, SoftDevice S132 v3.0.0, an application of approximately 79 KB, a Nordic Secure DFU bootloader, and a settings page whose CRC matched that of the app. We built a DFU package using [nRF Util](https://www.nordicsemi.com/Products/Development-tools/nRF-Util) and a Python client with bleak that reboots the sensor into bootloader mode, uploads the package, and logs every step. Claude tested it against a simulated bootloader, but real hardware steered the corrections: it looked for the wrong DFU UUID (the sensor uses the experimental Nordic SDK 12.x service, `8E400001`), and the log revealed the correct one.
 
 With that correction, the bootloader received the init packet properly (the CRC matched), but rejected it during validation with a generic error (`INVALID_OBJECT`), which in this bootloader covers signature, version, or format without specifying which.
 
@@ -642,7 +642,7 @@ The choice of tool was not random; each demonstrated clear advantages depending 
 
 Every tool exhibited hallucinations or errors at some stage—detailed in [section g of Part 3](#g-critical-review-of-the-c-files-and-detected-hallucinations) and in [section f on the fall detection algorithm](#f-fall-detection-algorithm). The guiding rule was consistent across the board: verify every result against real hardware or the original binary before making decisions.
 
-This also highlights one of the research lines we are incorporating into our Laboratory's PID project: closing the loop by granting LLMs access to hardware and interaction with physical tools to accelerate the experimental cycle.
+As previously mentioned, this is also one of the lines of research we are incorporating into the Laboratory’s R&D project: closing the loop—granting LLMs access to hardware and the ability to interact with physical tools—thereby eliminating the need for a user to be present during the majority of the development process.
 
 ---
 
