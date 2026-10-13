@@ -4,3 +4,4 @@ User-agent: *
 Allow: /
 
 Sitemap: {{ site.url | default: "https://prototipado.github.io" }}/sitemap.xml
+Sitemap: {{ site.url | default: "https://prototipado.github.io" }}/en/sitemap.xml
