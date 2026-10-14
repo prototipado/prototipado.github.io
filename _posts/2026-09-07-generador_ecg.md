@@ -20,9 +20,13 @@ excerpt: "Un generador de señales de ECG capaz de producir múltiples derivacio
 ## Introducción
 
 A mediados de 2024 surgió, dentro del Laboratorio, la idea de desarrollar un generador de señales de ECG. La inquietud fue planteada por Eduardo Filomena, uno de los integrantes del Laboratorio, con un objetivo bastante concreto: contar con una herramienta que permitiera probar equipos de electrocardiografía, pero que al mismo tiempo pudiera utilizarse con fines didácticos y demostrativos.
+
 Para ese momento, nosotros ya llevábamos un tiempo trabajando en el desarrollo de un electrocardiógrafo inalámbrico de 12 derivaciones. Como parte de ese trabajo necesitábamos probar el equipo y, hasta entonces, las pruebas las realizábamos generalmente utilizando un generador de funciones que incorporaba algunas señales biológicas. El problema era que este equipo estaba limitado a un único canal de ECG.
+
 Contar con un generador capaz de producir múltiples derivaciones y, además, permitirnos personalizar las señales generadas nos resultaba especialmente atractivo. No solo nos permitiría hacer pruebas más completas sobre el electrocardiógrafo, sino también generar distintas condiciones y señales para evaluar su comportamiento, y la posibilidad de automatizar sesiones de testeo.
+
 A partir de esa necesidad comenzó el proyecto que vamos a documentar en esta serie de posts. La intención es recorrer el camino que seguimos durante el desarrollo: desde la recreación del diseño original, iniciado por Eduardo Filomena, pasando por las pruebas y los problemas que fuimos encontrando, hasta las modificaciones y mejoras que finalmente fuimos incorporando.
+
 El punto de partida era una [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico//) (RP2040) programada en Arduino. El microcontrolador tenía almacenados los datos de las señales y, a partir de ellos, generaba mediante PWM las señales correspondientes a las 10 derivaciones convencionales del ECG.
 Como la salida del microcontrolador era una señal PWM, esta debía ser acondicionada para obtener una señal analógica. Para ello, las salidas pasaban por una serie de filtros pasa-bajos pasivos, encargados de atenuar la componente de alta frecuencia del PWM y reconstruir la forma de onda del ECG. Luego un divisor resistivo atenuaba la amplitud a valores de milivoltios.
 
@@ -47,7 +51,9 @@ Ese primer prototipo resulto de utilidad para realizar las primeras pruebas de a
 Inmediatamente después de recrear el dispositivo original, nos pusimos a trabajar en mejorar sus capacidades.
 Uno de los primeros cambios fue migrar el código a C. A partir de ese momento, todo el desarrollo posterior lo realizamos en Visual Studio Code, utilizando el SDK oficial de Raspberry Pi para la Pico. Como ocurre cada vez más en nuestros proyectos, buena parte del desarrollo y de las tareas de programación fue asistida por distintas herramientas de inteligencia artificial, que utilizamos como apoyo durante el proceso.
 Pero no queríamos quedarnos solamente con una mejora del software. A medida que empezamos a utilizar el generador, también fueron apareciendo nuevas necesidades.
+
 Nos parecía mucho más útil contar con un dispositivo que pudiera transportarse fácilmente y utilizarse de manera independiente, sin depender de una computadora durante las pruebas. Por eso decidimos incorporar una batería (18650 LiPo) como fuente de alimentación, junto con una placa para gestionar su carga. Esto, además de hacerlo portátil, tenía otra ventaja interesante para nuestro caso: permitía trabajar con la referencia de masa flotante respecto de otros equipos durante los ensayos.
+
 También incorporamos una interfaz de usuario propia, basada en una pantalla OLED y un encoder rotativo. De esta manera, podíamos seleccionar las señales y configurar el generador directamente desde el dispositivo, sin necesidad de conectarlo a una PC.
 
 Todo el diseño del gabiente lo fuimos realizando en Fusion360, pasando por varias versiones.

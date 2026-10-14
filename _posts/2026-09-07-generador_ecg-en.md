@@ -20,8 +20,11 @@ excerpt: "An ECG signal generator capable of producing multiple leads with enoug
 ## Introduction
 
 In mid-2024, the idea of developing an ECG signal generator came up at the Laboratory. Eduardo Filomena, one of the Laboratory's members, proposed it with a clear goal: to have a tool that could test electrocardiography equipment while also serving educational and demonstration purposes.
+
 By that time, we had already been working for a while on a 12-lead wireless electrocardiograph. As part of that work, we needed to test the device and, until then, we usually used a function generator that included some biological signals. The problem was that this equipment was limited to a single ECG channel.
+
 A generator capable of producing multiple leads and allowing us to customize the generated signals was especially appealing. It would let us run more complete tests on the electrocardiograph, generate different conditions and signals to evaluate its behavior, and potentially automate test sessions.
+
 That need gave rise to the project documented in this series of posts. We intend to retrace the path we followed during development: from recreating the original design, started by Eduardo Filomena, through the tests and problems we encountered, to the changes and improvements we eventually incorporated.
 
 The starting point was a [Raspberry Pi Pico](https://www.raspberrypi.com/products/raspberry-pi-pico//) (RP2040) programmed in Arduino. The microcontroller stored the signal data and used it to generate the signals for the 10 conventional ECG leads through PWM.
@@ -45,7 +48,9 @@ Immediately after recreating the original device, we began improving its capabil
 One of the first changes was migrating the code to C. From then on, we carried out all subsequent development in Visual Studio Code using the official Raspberry Pi SDK for the Pico. As is increasingly common in our projects, various artificial intelligence tools assisted a significant part of the development and programming work.
 
 But we did not want to stop at a software improvement. As we began using the generator, new needs emerged.
+
 We thought it would be much more useful to have a device that could be carried easily and used independently, without relying on a computer during tests. So we decided to add an 18650 LiPo battery as a power source, along with a charging-management board. Besides making it portable, this offered another benefit for our use case: it allowed us to work with a floating ground reference relative to other equipment during testing.
+
 We also added our own user interface, based on an OLED display and a rotary encoder. This let us select signals and configure the generator directly on the device, without connecting it to a PC.
 
 We developed the enclosure in Fusion 360, going through several versions.
