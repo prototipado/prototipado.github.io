@@ -24,7 +24,7 @@ Cycling is one of my favorite activities outside work. Near Oro Verde, there are
 
 This year, Specialized discontinued the app that supported it and moved to a new one that is incompatible. The servers also stopped responding: it is no longer possible to sign in, reset a password, or create an account, so I can no longer use the old app. I was left with a useful device I could not use, and an uncomfortable question: did I really own it?
 
-In the laboratory, we are working on an R&D project focused on the use of AI tools in the design and development of medical products. My own situation led me to explore a different application: not for design, but rather to understand how a closed-system device functions, so that I could continue using it.
+In the laboratory, we are working on an PID project focused on the use of AI tools in the design and development of medical products. My own situation led me to explore a different application: not for design, but rather to understand how a closed-system device functions, so that I could continue using it.
 
 ### Document Structure
 
