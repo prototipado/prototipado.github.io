@@ -24,6 +24,9 @@ El ciclismo es una de mis actividades favoritas fuera del trabajo. Cerca de Oro 
 
 Este año Specialized dio de baja la app que lo soportaba y migró a una nueva que no es compatible. Además, los servidores dejaron de responder: no se puede iniciar sesión, recuperar la contraseña ni crear una cuenta, así que estoy bloqueado de seguir usando la app vieja. Me quedé con un dispositivo útil que no puedo usar, y con una pregunta incómoda: ¿realmente era mío? 
 
+En el Laboratorio estamos trabajando en un proyecto PID sobre el uso de herramientas de IA en el diseño y desarrollo de producto médico. Mi situación me llevó a probar un uso distinto: no para diseñar, sino para entender cómo funciona un dispositivo cerrado y poder seguir usándolo.
+
+
 ### Estructura del documento
 
 Este caso de estudio documenta el proceso completo de ingeniería inversa sobre el sensor ANGi y el desarrollo de una alternativa abierta e independiente (*OpenAngi*) utilizando herramientas de IA. El trabajo está organizado en 5 partes principales:
