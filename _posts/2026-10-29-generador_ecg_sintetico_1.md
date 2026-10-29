@@ -1,7 +1,7 @@
 ---
 title: "Del registro al modelo: generación sintética de ECG en tiempo real"
 author: Juan I. Cerrudo
-date: 2026-09-07
+date: 2026-10-29
 lang: es
 page_id: synthetic-ecg-generator-1
 permalink: /desarrollos/generador_ecg_sintetico_1/
