@@ -134,6 +134,7 @@ Pero esa es justamente la parte interesante. Habíamos pasado de preguntarnos "�
 
 En proximas entregas nos vamos a enfocar en probar diferentes modelos y evaluar la calidad de la señal generada con ellos.
 
+Como en el caso anterior, los archivos necesarios para la implementación de esta segunda versión del generador están disponibles en GitHub, en el [repo del Laboratorio](https://github.com/prototipado/ECG_Phantom).
 ---
 
 [![Hits](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg_sintetico_1/.svg)](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg_sintetico_1/)

@@ -133,6 +133,8 @@ But that is precisely what makes it compelling. We had transitioned from asking 
 
 In future installments, we will focus on exploring different models and assessing the signal quality they deliver.
 
+As in the previous case, the files required for the implementation of this second version of the generator are available on GitHub, in the [Laboratory repo](https://github.com/prototipado/ECG_Phantom).
+
 ---
 
 [![Hits](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg_sintetico_1/.svg)](https://hits.sh/prototipado.github.io/desarrollos/generador_ecg_sintetico_1/)
