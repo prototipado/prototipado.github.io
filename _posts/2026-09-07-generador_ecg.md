@@ -1,7 +1,7 @@
 ---
 title: "Del ECG Real al Corazón Virtual-Construyendo un generador de ECG desde cero"
 author: Juan I. Cerrudo
-date: 2026-08-18
+date: 2026-09-07
 lang: es
 page_id: ecg-signal-generator
 permalink: /desarrollos/generador_ecg/
