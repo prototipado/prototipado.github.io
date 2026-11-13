@@ -102,6 +102,18 @@ Repetimos las pruebas con el proceso de calibración del dispositivo, que mide l
 | Abierto, 60 Hz | 0 | −0,10 nA | 1,65 nA | +0,012 nA | 2,04 nA |
 
 
+## El equipo terminado
+
+<div class="potensiostato-final" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;align-items:start;margin:1.2em 0;">
+<figure style="margin:0;min-width:0;">
+<a href="/assets/images/potensiostato/final_1.jpg" class="image-popup" title="Potenciostato y cables"><img src="/assets/images/potensiostato/final_1.jpg" alt="Potenciostato terminado junto al cable USB y los cables coaxiales de conexión." loading="lazy" decoding="async" style="display:block;width:100%;height:auto;" /></a>
+<figcaption>El potenciostato y sus cables de uso: USB y coaxiales.</figcaption>
+</figure>
+<figure style="margin:0;min-width:0;">
+<a href="/assets/images/potensiostato/final_2.jpg" class="image-popup" title="Conectores BNC"><img src="/assets/images/potensiostato/final_2.jpg" alt="Detalle de los conectores BNC del potenciostato." loading="lazy" decoding="async" style="display:block;width:100%;height:auto;" /></a>
+<figcaption>Detalle de los conectores BNC.</figcaption>
+</figure>
+</div>
 ## Repositorio
 
 Todo el trabajo de software y diseño mecánico del proyecto está disponible como código abierto en [DStat-RD](https://github.com/prototipado/DStat-RD) bajo licencia GPL-3.0. El repositorio incluye:
