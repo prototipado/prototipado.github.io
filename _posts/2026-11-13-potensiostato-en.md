@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Redesigning a DStat Potentiostat: Multi-Material Enclosure, Native GUI, and Characterization"
 author: Juan I. Cerrudo
 date: 2026-11-13
@@ -67,7 +67,9 @@ DStat GUI 2.1 leaves all of that behind. The stack was migrated to Python 3.10+ 
 
 To validate the potentiostat we built a dummy cell with 1 MΩ (0.1 % tolerance) and 4 MΩ (1 % tolerance) resistors and with an open circuit, applying 100 mV with a 3 MΩ transimpedance gain. Each test was a 60 s chronoamperometry sampled at 50 and 60 Hz. In the first round, with the board uncleaned and unshielded, the measured current showed an excess of ~17.5 nA, the same for both resistors: +17.5 % with 1 MΩ and nearly +70 % with 4 MΩ. The fact that the absolute excess was constant pointed to a leakage resistance of ~5.7 MΩ in parallel with the test resistor, and with an open circuit the offset was only ~17 pA.
 
-After cleaning the PCB in an ultrasonic bath and mounting it inside a grounded shielded enclosure, the excess disappeared. The error dropped to −0.7 to −0.9 %, a scale error common to both resistors that is consistent with component tolerances.
+After cleaning the PCB in an ultrasonic bath and mounting it inside a grounded shielded enclosure, the excess disappeared. The error dropped to −0.7 to −0.9 %, a scale error common to both resistors that is consistent with component tolerances. To make the shield, we covered the printed enclosure parts with aluminium tape and connected it to ground. The aim was to reduce mains noise, an issue we had also encountered in the first version of the device.
+
+{% include figure popup=true image_path="/assets/images/potensiostato/gabinete_shield.jpg" alt="3D-printed enclosure parts covered with aluminium tape" caption="Aluminium tape applied to the printed enclosure parts to form the potentiostat shield." class="align-center" %}
 
 
 | Test | Expected | Before: measured (error) | Before: noise rms | After: measured (error) | After: noise rms |

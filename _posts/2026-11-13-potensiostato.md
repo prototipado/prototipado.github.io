@@ -65,7 +65,9 @@ Con DStat GUI 2.1 eso quedó atrás. El stack se migró a Python 3.10+ y PyQt6, 
 ## Pruebas
 Para validar el potenciostato armamos una celda simulada con resistencias de 1 MΩ (Tol. 0.1%) y 4 MΩ (Tol. 1%) y con circuito abierto, aplicando 100 mV con una ganancia de transimpedancia de 3 MΩ. Cada prueba fue una cronoamperometría de 60 s, muestreada a 50 y a 60 Hz. En la primera tanda, con la placa sin limpiar y sin blindaje, la corriente medida tenía un exceso de ~17,5 nA, igual con ambas resistencias: +17,5 % con 1 MΩ y casi +70 % con 4 MΩ. Que el exceso absoluto fuera constante apuntaba a una fuga de ~5,7 MΩ en paralelo con la resistencia de prueba, y con circuito abierto el offset era de apenas ~17 pA.
 
-Después de limpiar la PCB en ultrasonido y montarla en un gabinete con blindaje a masa, el exceso desapareció. El error quedó en −0,7 a −0,9 %, un error de escala común a ambas resistencias que es compatible con la tolerancia de los componentes. 
+Después de limpiar la PCB en ultrasonido y montarla en un gabinete con blindaje a masa, el exceso desapareció. El error quedó en −0,7 a −0,9 %, un error de escala común a ambas resistencias que es compatible con la tolerancia de los componentes. Para formar el blindaje, recubrimos las piezas impresas del gabinete con cinta de aluminio y lo conectamos a masa. Buscábamos reducir el ruido de línea, un problema que ya había aparecido en la primera versión del equipo.
+
+{% include figure popup=true image_path="/assets/images/potensiostato/gabinete_shield.jpg" alt="Piezas impresas del gabinete recubiertas con cinta de aluminio" caption="Recubrimiento de las piezas impresas con cinta de aluminio para formar el blindaje del potenciostato." class="align-center" %} 
 
 
 | Prueba | Esperado | Antes: medido (error) | Antes: ruido rms | Después: medido (error) | Después: ruido rms |
