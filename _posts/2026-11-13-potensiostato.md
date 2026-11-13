@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Rediseño de un potensiostato DStat: gabinete multimaterial, GUI nativa y caracterización"
 author: Juan I. Cerrudo
 date: 2026-11-13
@@ -81,7 +81,7 @@ Después de limpiar la PCB en ultrasonido y montarla en un gabinete con blindaje
 El ruido a 50 Hz bajó de ~250 pA a ~45 pA rms, y con circuito abierto es prácticamente el mismo, así que ya estamos en el piso de la electrónica de adquisición. A 60 Hz sigue habiendo un tono de ~9,75 Hz de 1,3–1,9 nA rms: es interferencia de red eléctrica (50 Hz) aliasada al muestrear a 60 Hz, lo que la desplaza a 60 − 50 = 10 Hz. El hecho de que desaparezca al cambiar la tasa de muestreo a 50 Hz —donde la interferencia de red cae exactamente en DC y es rechazada— lo confirma.
 
 
-{% include figure popup=true image_path="/assets/images/potensiostato/fft_shield_vs_no_shield.png" FFT Shield vs No Shield" caption="FFT Shield vs No Shieldcking" class="align-center" %}
+{% include figure popup=true image_path="/assets/images/potensiostato/fft_shield_vs_no_shield.png" alt="FFT con y sin blindaje" caption="Comparación de la FFT con y sin blindaje" class="align-center" %}
 
 Persiste una componente de interferencia que, por ahora, atribuimos a la red eléctrica. Sospechamos que el blindaje no tiene buena continuidad eléctrica: la cinta de aluminio podría no hacer buen contacto entre sus partes (el adhesivo puede ser aislante) o la oxidación superficial podría impedirlo. La version anterior habia sido recubierto de una capa de cobre, lograndose una diferencia mucho mas marcada en la reducción del ruido de linea.
 
