@@ -1,4 +1,4 @@
----
+﻿---
 title: "From Recording to Model: Real-Time Synthetic ECG Generation"
 author: Juan I. Cerrudo
 date: 2026-10-29
